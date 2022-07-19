@@ -1,0 +1,86 @@
+.seccioncyv{
+    color: white;
+    background-color: black;
+    padding: 30px;
+    padding-top: 80px;
+    background-image: linear-gradient(rgb(7, 1, 65), black);
+    height: 1200px;
+}
+
+    .titulocomprar{
+        display: flex;
+        justify-content: center;
+        padding: 10px;
+        font-family: 'Heebo', sans-serif;
+        font-weight: 600;
+    } 
+    .parrafocomprar{
+        display: flex;
+        justify-content: center;
+        padding: 15px;
+        font-family: 'Heebo', sans-serif;
+    }
+    .botones{
+        justify-items: center;
+        justify-content: center;
+        display: flex;
+        padding: 20px;}
+        .button1{
+            padding-right: 30px;}
+            .botonuno{
+                position: relative;
+                width: 130px;
+                height: 40px;
+                border-radius: 50px;
+                border: none;
+                background-color: rgb(255, 255, 255);
+                font-family: 'Heebo', sans-serif;
+                font-size: 17px;
+                font-weight: 700;
+               
+            }
+    
+        .botondos{
+            position: relative;
+            width: 130px;
+            height: 40px;
+            border-radius: 50px;
+            border: none;
+            background-color: white;
+            font-family: 'Heebo', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            
+        }
+.criptos{
+    width: 1000px;
+    height: 100px;
+    text-align: center;
+    margin-right: 600px;
+    display: flex;
+    margin-top: 80px;
+    justify-content: space-between;
+    border-radius: 40px;
+    background-color: rgb(255, 255, 255);
+}
+.titulo{
+    font-size: 25px;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    margin-top: 28px;
+    
+}
+.imagenes{
+    width: 100px;
+    align-items: center;
+
+}
+.texto{
+    font-size: 25px;
+    color: black;
+    margin-top: 28px;
+    
+}
+    
+    
