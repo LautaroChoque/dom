@@ -27,6 +27,24 @@ criptomonedas.forEach(bitcoin => {
     `
 })
 
+const botonComprar = document.getElementById("botonComprar")
+
+    botonComprar.addEventListener("click", () => {
+        console.log("Click en comprar")
+    })
+
+const botonVender = document.getElementById("botonVender")
+    botonVender.addEventListener("click", () =>{
+        console.log("Click en vender")
+    })
+
+const input = document.getElementById("input")
 
 
+input.addEventListener("input", () => {
+    console.log(input.value)
+})
 
+input.addEventListener("change", () => {
+    console.log(input.value)
+})

@@ -82,5 +82,14 @@
     margin-top: 28px;
     
 }
-    
+.buttonBuscar{
+    width: 100px;
+    position: relative;
+    bottom: 200px;
+    border-radius: 10px;
+}
+.inputcss{
+    position: relative;
+    bottom: 200px;
+}
     
