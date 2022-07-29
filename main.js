@@ -15,6 +15,9 @@ const bnb = new Criptomonedas(4, "BNB", "img/bnb.png", 12000)
 
 const criptomonedas = [bitcoin, ethereum, ada, bnb]
 
+localStorage.setItem('criptomonedas', JSON.stringify(criptomonedas))
+console.log(JSON.parse(localStorage.getItem('criptomonedas')))
+
 const divCriptomonedas = document.getElementById("divCriptomonedas")
 
 criptomonedas.forEach(bitcoin => {
@@ -23,6 +26,7 @@ criptomonedas.forEach(bitcoin => {
         <p class="titulo"> ${bitcoin.titulo} </p>
         <img class="imagenes" src= ${bitcoin.imagen} </img>
         <p class="texto" >Precio: ${bitcoin.precio} </p>
+        <button class="" id="">Comprar</button>
     </div>
     `
 })
@@ -48,3 +52,10 @@ input.addEventListener("input", () => {
 input.addEventListener("change", () => {
     console.log(input.value)
 })
+
+
+if(localStorage.getItem('theme')){
+
+} else{
+    localStorage.setItem('theme', 'light')
+} 
