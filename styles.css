@@ -93,9 +93,16 @@
     bottom: 200px;
 }
 
-.botcomprar{
-    width: 100px;
-    height: 50px;
-    border-radius: 10px;
-    margin-top: 25px;
+.botComprar{
+    width: 130px;
+    height: 40px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    font-family: 'Heebo', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 25px;
+
 }

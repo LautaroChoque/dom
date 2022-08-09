@@ -53,17 +53,20 @@ const botonVender = document.getElementById("botonVender")
     })
 
 const boton = document.getElementsByClassName("botComprar")
-    boton.addEventListener("click", () => {
-        Swal.fire({
-            icon: 'success',
-            title: 'Compraste',
-            text: 'Tu compra ha sido finalizada!',
-            footer: '<a Mas informacion</a>'
-          })
-    console.log("botComprar")
+const botones = [...boton];
+    botones.forEach((elem)=>{
+        elem.addEventListener('click', () => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Compraste',
+                text: 'Tu compra ha sido finalizada!',
+                footer: '<a Mas informacion</a>'
+              })
         })
+    }) 
     
-
+    
+console.log(botones)
 const input = document.getElementById("input")
 
 
