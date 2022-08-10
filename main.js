@@ -47,7 +47,7 @@ const botonVender = document.getElementById("botonVender")
         Swal.fire({
             icon: 'success',
             title: 'Vendiste',
-            text: 'Tu venta ha sido finalizada',
+            text: 'Tu venta ha sido finalizada!',
             footer: '<a Mas informacion</a>'
           })
     })
