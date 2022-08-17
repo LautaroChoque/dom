@@ -1,13 +1,4 @@
 
-fetch('https://criptoya.com/api/ripioexchange/dai/ars/100')
-.then(response => response.json())
-.then(({BTC,ARS,float}) => {
-    console.log(BTC, ARS, float)
-}
-
-)
-
-
 class Criptomonedas{
     constructor (id, titulo, imagen, precio, boton){
         this.id = id
@@ -29,17 +20,62 @@ localStorage.setItem('criptomonedas', JSON.stringify(criptomonedas))
 console.log(JSON.parse(localStorage.getItem('criptomonedas')))
 
 const divCriptomonedas = document.getElementById("divCriptomonedas")
-
-criptomonedas.forEach(bitcoin => {
-    divCriptomonedas.innerHTML += `
-    <div id= "criptomonedas ${bitcoin.id}" class="criptos" >
-        <p class="titulo"> ${bitcoin.titulo} </p>
-        <img class="imagenes" src= ${bitcoin.imagen} </img>
-        <p class="texto" >Precio: ${bitcoin.precio} </p>
-        <button class="botComprar" id=""> ${bitcoin.boton}</button>
-    </div>
-    `
+    
+    fetch('https://criptoya.com/api/ripio/btc')
+.then(response => response.json())
+.then(({ask}) => {
+    criptomonedas.forEach(bitcoin => {
+        divCriptomonedas.innerHTML += `
+        <div id= "criptomonedas ${bitcoin.id}" class="criptos" >
+            <p class="titulo"> ${bitcoin.titulo} </p>
+            <img class="imagenes" src= ${bitcoin.imagen} </img>
+            <p class="texto" >Precio: ${ask} </p>
+            <button class="botComprar" id=""> ${bitcoin.boton}</button>
+        </div>
+        `
+    })   
 })
+
+
+
+// fetch('https://criptoya.com/api/ripio/eth')
+// .then(response => response.json())
+// .then(({ask}) => {
+//     console.log(ask)
+// }
+// )
+
+// fetch('https://criptoya.com/api/ripio/usdc')
+// .then(response => response.json())
+// .then(({ask}) => {
+//     console.log(ask)
+//     })
+
+
+// criptomonedas.forEach(bitcoin => {
+//     divCriptomonedas.innerHTML += `
+//     <div id= "criptomonedas ${bitcoin.id}" class="criptos" >
+//         <p class="titulo"> ${bitcoin.titulo} </p>
+//         <img class="imagenes" src= ${bitcoin.imagen} </img>
+//         <p class="texto" >Precio: ${bitcoin.precio} </p>
+//         <button class="botComprar" id=""> ${bitcoin.boton}</button>
+//     </div>
+//     `
+// })
+
+
+const boton = document.getElementsByClassName("botComprar")
+const botones = [...boton];
+    botones.forEach((elem)=>{
+        elem.addEventListener('click', () => {
+            Swal.fire({
+                icon: 'success',
+                title: 'Compraste',
+                text: 'Tu compra ha sido finalizada',
+                footer: '<a Mas informacion</a>'
+              })
+        })
+    }) 
 
 const botonComprar = document.getElementById("botonComprar")
     botonComprar.addEventListener("click", () => {
@@ -61,18 +97,7 @@ const botonVender = document.getElementById("botonVender")
           })
     })
 
-const boton = document.getElementsByClassName("botComprar")
-const botones = [...boton];
-    botones.forEach((elem)=>{
-        elem.addEventListener('click', () => {
-            Swal.fire({
-                icon: 'success',
-                title: 'Compraste',
-                text: 'Tu compra ha sido finalizada!',
-                footer: '<a Mas informacion</a>'
-              })
-        })
-    }) 
+
     
     
 console.log(botones)
@@ -88,8 +113,4 @@ input.addEventListener("change", () => {
 })
 
 
-if(localStorage.getItem('theme')){
 
-} else{
-    localStorage.setItem('theme', 'light')
-}  
