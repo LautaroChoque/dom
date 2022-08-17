@@ -1,4 +1,13 @@
 
+fetch('https://criptoya.com/api/ripioexchange/dai/ars/100')
+.then(response => response.json())
+.then(({BTC,ARS,float}) => {
+    console.log(BTC, ARS, float)
+}
+
+)
+
+
 class Criptomonedas{
     constructor (id, titulo, imagen, precio, boton){
         this.id = id
@@ -84,4 +93,3 @@ if(localStorage.getItem('theme')){
 } else{
     localStorage.setItem('theme', 'light')
 }  
-
