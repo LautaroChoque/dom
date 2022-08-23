@@ -97,9 +97,24 @@ async function infoapi(linkApi,indice){
         <img class="imagenes" src= ${criptomonedas[indice].imagen} </img>
         <p class="texto" >Precio: ${criptomonedas[indice].precio} </p>
         <button class="botonComprar1">${criptomonedas[indice].boton}</button>
+        <button class="button-add" onclick="add('${criptomonedas[indice].titulo}', '${criptomonedas[indice].precio}')" >Agregar al carrito</button>
     </div>
     `
 }
+
+let criptomonedass = [];
+let total = 0;
+
+function add (product, precio){
+    criptomonedass.push(product);
+    total = total += precio; 
+    document.getElementById("checkout").innerHTML = `Pagar $${precio}`
+}
+
+function pay() {
+    window.alert(criptomonedass.join(`Vas a comprar $${total} de `));
+}
+
 
 infoapi('https://criptoya.com/api/ripio/btc', 0).then
 infoapi('https://criptoya.com/api/ripio/eth', 1).then

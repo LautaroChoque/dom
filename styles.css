@@ -106,3 +106,9 @@
     top: 25px;
 
 }
+.pagar{
+    width: 500px;
+    background-color: aqua;
+    position: relative;
+    left: 600px;
+}
