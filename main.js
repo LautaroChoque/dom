@@ -1,88 +1,20 @@
 
-// class Criptomonedas{
-//     constructor (id, titulo, imagen, precio, boton){
-//         this.id = id
-//         this.titulo = titulo
-//         this.imagen = imagen
-//         this.precio = precio
-//         this.boton = boton
-//     }
-// }
-
-// const bitcoin = new Criptomonedas(1, "Bitcoin", "img/opengraph.png", 79000, "Comprar")
-// const ethereum = new Criptomonedas(2, "Ethereum", "img/eth.png", 9000, "Comprar")
-// const ada = new Criptomonedas(3, "Cardano", "img/ada.png", 0.5, "Comprar")
-// const bnb = new Criptomonedas(4, "BNB", "img/bnb.png", 12000, "Comprar")
-
-// const criptomonedas = [bitcoin, ethereum, ada, bnb]
-
-// localStorage.setItem('criptomonedas', JSON.stringify(criptomonedas))
-// console.log(JSON.parse(localStorage.getItem('criptomonedas')))
-
-// const divCriptomonedas = document.getElementById("divCriptomonedas")
-    
-//     fetch('https://criptoya.com/api/ripio/btc')
-// .then(response => response.json())
-// .then(({ask}) => {
-//     criptomonedas.forEach(bitcoin => {
-//         divCriptomonedas.innerHTML += `
-//         <div id= "criptomonedas ${bitcoin.id}" class="criptos" >
-//             <p class="titulo"> ${bitcoin.titulo} </p>
-//             <img class="imagenes" src= ${bitcoin.imagen} </img>
-//             <p class="texto" >Precio: ${ask} </p>
-//             <button class="botComprar" id=""> ${bitcoin.boton}</button>
-//         </div>
-//         `
-//     })   
-// })
-
-
-
-// fetch('https://criptoya.com/api/ripio/eth')
-// .then(response => response.json())
-// .then(({ask}) => {
-//     console.log(ask)
-// }
-// )
-
-// fetch('https://criptoya.com/api/ripio/usdc')
-// .then(response => response.json())
-// .then(({ask}) => {
-//     console.log(ask)
-//     })
-
-
-// criptomonedas.forEach(bitcoin => {
-//     divCriptomonedas.innerHTML += `
-//     <div id= "criptomonedas ${bitcoin.id}" class="criptos" >
-//         <p class="titulo"> ${bitcoin.titulo} </p>
-//         <img class="imagenes" src= ${bitcoin.imagen} </img>
-//         <p class="texto" >Precio: ${bitcoin.precio} </p>
-//         <button class="botComprar" id=""> ${bitcoin.boton}</button>
-//     </div>
-//     `
-// })
-
-
-class Criptomonedas{
-    constructor (id, titulo, imagen, precio, boton){
+class Criptomoneda{
+    constructor (id, titulo, imagen, precio){
         this.id = id
         this.titulo = titulo
         this.imagen = imagen
         this.precio = precio
-        this.boton = boton
     }
 }
 
-const bitcoin = new Criptomonedas(1, "Bitcoin", "img/opengraph.png", 79000, "Comprar")
-const ethereum = new Criptomonedas(2, "Ethereum", "img/eth.png", 9000, "Comprar")
-const ada = new Criptomonedas(3, "Cardano", "img/ada.png", 0.5, "Comprar")
-const bnb = new Criptomonedas(4, "BNB", "img/bnb.png", 12000, "Comprar")
+const bitcoin = new Criptomoneda(1, "Bitcoin", "img/opengraph.png", 79000)
+const ethereum = new Criptomoneda(2, "Ethereum", "img/eth.png", 9000)
+const ada = new Criptomoneda(3, "Cardano", "img/ada.png", 0.5)
+const bnb = new Criptomoneda(4, "BNB", "img/bnb.png", 12000)
 
 const criptomonedas = [bitcoin, ethereum, ada, bnb]
 
-localStorage.setItem('criptomonedas', JSON.stringify(criptomonedas))
-console.log(JSON.parse(localStorage.getItem('criptomonedas')))
 
 const divCriptomonedas = document.getElementById("divCriptomonedas")
 
@@ -90,29 +22,34 @@ async function infoapi(linkApi,indice){
     const infoapi = await fetch(linkApi)
     const criptoParseado = await infoapi.json()
     criptomonedas[indice].precio = criptoParseado.ask
-    console.log(criptomonedas)
+   
+
+    
     divCriptomonedas.innerHTML += `
-    <div id= "criptomonedas ${criptomonedas[indice].id}" class="criptos" >
+    <div id= "cripto${criptomonedas[indice].id}" class="criptos" >
         <p class="titulo"> ${criptomonedas[indice].titulo} </p>
         <img class="imagenes" src= ${criptomonedas[indice].imagen} </img>
         <p class="texto" >Precio: ${criptomonedas[indice].precio} </p>
-        <button class="botonComprar1">${criptomonedas[indice].boton}</button>
-        <button class="button-add" onclick="add('${criptomonedas[indice].titulo}', '${criptomonedas[indice].precio}')" >Agregar al carrito</button>
+        <button class="botonComprar1">Comprar</button>
+        <button class="button-add" onclick="add('${criptomonedas[indice].titulo}', '${criptomonedas[indice].precio}')">Agregar al carrito</button>
     </div>
     `
 }
 
-let criptomonedass = [];
+let carrito = [];
 let total = 0;
 
-function add (product, precio){
-    criptomonedass.push(product);
-    total = total += precio; 
-    document.getElementById("checkout").innerHTML = `Pagar $${precio}`
-}
 
-function pay() {
-    window.alert(criptomonedass.join(`Vas a comprar $${total} de `));
+const checkout = document.getElementById("checkout")
+
+
+function add (cripto, precio){
+    carrito.push(cripto);
+    console.log(carrito)
+   
+    total += Number(precio)
+  
+    checkout.innerHTML = `Pagar $${total}`
 }
 
 
@@ -122,43 +59,32 @@ infoapi('https://criptoya.com/api/ripio/ada', 2).then
 
 
 
-
-
-     
-
 const botonComprar = document.getElementById("botonComprar")
-    botonComprar.addEventListener("click", () => {
-        Swal.fire({
-            icon: 'success',
-            title: 'Compraste',
-            text: 'Tu compra ha sido finalizada!',
-            footer: '<a Mas informacion</a>'
-          })
+botonComprar.addEventListener("click", () => {
+    let cript = carrito.join(", ")
+    Swal.fire({
+        title: `Quieres comprar ${cript} por un total de $${total}`,
+        showDenyButton: true,
+        confirmButtonText: 'Sí, comprar',
+        denyButtonText: `No, cancelar`,
+        allowOutsideClick: false,
+    }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire('Tu compra fue exitosa!')
+        } else if (result.isDenied) {
+          Swal.fire('Tu compra fue cancelada.')
+        }
     })
-
-const botonVender = document.getElementById("botonVender")
-    botonVender.addEventListener("click", () =>{
-        Swal.fire({
-            icon: 'success',
-            title: 'Vendiste',
-            text: 'Tu venta ha sido finalizada!',
-            footer: '<a Mas informacion</a>'
-          })
-    })
-
-
-    
-    
-
-const input = document.getElementById("input")
-
-
-input.addEventListener("input", () => {
-    console.log(input.value)
 })
 
-input.addEventListener("change", () => {
-    console.log(input.value)
+const botonVender = document.getElementById("botonVender")
+botonVender.addEventListener("click", () =>{
+    Swal.fire({
+        icon: 'success',
+        title: 'Vendiste',
+        text: 'Tu venta ha sido finalizada!',
+        footer: '<a>Mas informacion</a>'
+    })
 })
 
 

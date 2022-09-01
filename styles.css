@@ -112,3 +112,16 @@
     position: relative;
     left: 600px;
 }
+
+.button-add{
+    width: 130px;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    font-family: 'Heebo', sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 25px;
+}
